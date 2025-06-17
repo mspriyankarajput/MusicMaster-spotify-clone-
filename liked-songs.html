@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Liked Songs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="liked-page">
+  <div class="container">
+    <div class="main">
+      <h2>Your Liked Songs</h2>
+      <div class="song-list" id="likedSongsContainer">
+        <!-- Songs added dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini Player -->
+  <div class="mini-player" id="miniPlayer" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #181818; color: white; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.5);">
+    <div class="mini-left" style="display: flex; align-items: center; gap: 10px;">
+      <img src="" alt="Song Cover" id="miniImg" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
+      <div>
+        <div id="miniTitle">No song playing</div>
+        <div id="miniArtist" style="font-size: 0.9em; color: #bbb;"></div>
+      </div>
+    </div>
+
+    <div class="mini-controls" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <button onclick="prevSong()">⏮️</button>
+      <button id="miniPlayPause">▶</button>
+      <button onclick="nextSong()">⏭️</button>
+      <span id="currentTime">0:00</span>
+      <input type="range" id="miniProgress" value="0" min="0" max="100" style="width: 100px;">
+      <span id="duration">0:00</span>
+    </div>
+
+    <div class="mini-right" style="margin-left: 10px;">
+      <input type="range" id="miniVolume" min="0" max="1" step="0.01" value="1" style="width: 80px;">
+    </div>
+  </div>
+
+  <script src="likedsongs.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MusicMaster - Spotify Clone</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav style="display: flex; align-items: center; justify-content: space-between; background: #1db954; padding: 10px 20px;">
+    <div style="display: flex; align-items: center;">
+      <img src="images/logo.png" alt="MusicMaster Logo" style="height: 40px; margin-right: 10px; filter: drop-shadow(1px 1px 2px black);">
+      <h1 style="color: white; font-size: 1.6rem; font-weight: bold; margin: 0;">MusicMaster</h1>
+    </div>
+    <div style="display: flex; gap: 20px;">
+      <a href="create-playlist.html" style="color: white; font-weight: 500; text-decoration: none;">Create Playlist</a>
+      <a href="liked-songs.html" style="color: white; font-weight: 500; text-decoration: none;">Liked Songs</a>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>MusicMaster</h2>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search songs or artist..." />
+        <button id="searchBtn"><i class="bi bi-search"></i></button>
+      </div>
+        <ul class="sidebar-menu">
+            <li data-type="playlist"><i class="bi bi-music-note-beamed"></i> Playlist</li>
+            <li data-type="lastListening"><i class="bi bi-music-note-beamed"></i> Last Listening</li>
+            <li data-type="recommended"><i class="bi bi-music-note-beamed"></i> Recommended</li>
+          </ul> 
+      <ul id="songList">
+        <li class="songItem" data-index="0">
+          <span>01</span>
+          <img src="images/1.jpg" alt="">
+          <h5>On My Way <br><div class="subtitle">Alan Walker</div></h5>
+          <i class="bi playListPlay bi-play-circle-fill" id="0"></i>
+        </li>
+        <li class="songItem" data-index="1">
+          <span>02</span>
+          <img src="images/2.jpg" alt="">
+          <h5>Fade <br><div class="subtitle">Alan Walker</div></h5>
+          <i class="bi playListPlay bi-play-circle-fill" id="1"></i>
+        </li>
+        <li class="songItem" data-index="2">
+          <span>03</span>
+          <img src="images/3.jpg" alt="">
+          <h5>Cartoon - On & On <br><div class="subtitle">Daniel Levi</div></h5>
+          <i class="bi playListPlay bi-play-circle-fill" id="2"></i>
+        </li>
+        <button onclick="likeSong('Kesariya')">❤️ Like Kesariya</button>
+      </ul>
+
+      <div class="sidebar-footer">
+        <p>Cookies</p>
+        <p>Privacy</p>
+      </div>  
+
+</div>
+       
+    <!-- Main Content -->
+
+    <div class="main">
+
+      <div class="auth-buttons">
+        <button onclick="showSignup()">Sign Up</button>
+        <button onclick="showLogin()">Login</button>
+      </div>
+
+      <!-- Login Form -->
+<div id="loginForm" class="auth-form">
+  <h3>Login</h3>
+  <input type="text" id="loginUsername" placeholder="Username">
+  <input type="password" id="loginPassword" placeholder="Password">
+  <button id="LoginBtn">Login</button>
+  <button onclick="document.getElementById('loginForm').style.display='none'">Close</button>
+</div>
+
+<!-- Signup Form -->
+<div id="signupForm" class="auth-form">
+  <h3>Sign Up</h3>
+  <input type="text" id="signupUsername" placeholder="Username">
+  <input type="email" id="signupEmail" placeholder="Email">
+  <input type="password" id="signupPassword" placeholder="Password">
+  <button id="SignupBtn">Sign Up</button>
+  <button onclick="document.getElementById('signupForm').style.display='none'">Close</button>
+</div>
+
+      <div class="song-details">
+        <div class="song-image">
+        <img src="images/1.jpg" alt="Current Song" id="currentSongImg">
+        </div>
+        <div class="song-info">
+        <h2 id="currentSongTitle">On My Way</h2>
+        <p id="currentSongArtist">Alan Walker</p>
+        <button class="like-button" onclick="likeCurrentSong()">❤️</button>
+        </div>
+        <div>
+        <audio id="audioPlayer" src="audio/aud1.mp3"></audio>
+        </div>
+
+         <!-- Player Controls -->
+        <div class="controls">
+          <i class="bi bi-shuffle" id="shuffleBtn" title="Shuffle"></i>
+          <i class="bi bi-skip-start-fill" id="prevBtn"></i>
+          <i class="bi bi-play-fill" id="playPause"></i>
+          <i class="bi bi-skip-end-fill" id="nextBtn"></i>
+          <i class="bi bi-repeat" id="repeatBtn" title="Repeat"></i>
+        </div>
+          <!-- Progress Bar -->
+        <div class="progress-container">
+            <span id="currentTime">0:00</span>
+            <input type="range" id="progressBar" value="0" step="1">
+            <span id="totalTime">0:00</span>
+          </div> 
+
+           <!-- 🎚️ Volume Control Added Here -->
+           <div class="volume-control">
+            <i id="volumeIcon" class="bi bi-volume-up-fill"></i>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+          </div> 
+      </div>
+
+         <!-- Popular Artists Section -->
+         <div id="popularArtists" class="popular-artists">
+          <h1>Popular Artists</h1>
+          <div class="artist-list">
+            <!-- Artist cards will be inserted here dynamically by JS -->
+          </div>
+        </div>                 
+</div>
+</div>
+</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
